@@ -15,14 +15,14 @@ public class Main {
 
         ArrayList<Student> student = new ArrayList<>();
         ArrayList<Teacher> teacher = new ArrayList<>();
-        // Student studentOb = new Student();
+//        Student studentOb = new Student();
 
         populateArrayList(student);
         int answer = 7;
         while (answer != 6) {
-            System.out.println("\n\nEnter:\n1 to show the student lists\n2 to create a new student \n" +
-                    "3 to change the address of the new student's address \n4 to show the teachers\n" +
-                    "5 to create a new teacher");
+            System.out.println("\n\nEnter:\n**********************************\n\t1 - to show the student lists\n\t2 - to create a new student \n\t" +
+                    "3 - to change the student\n\t4 - to show the teachers\n\t" +
+                    "5 - to create a new teacher\n**********************************\nEnter your choice:");
             answer = input.nextInt();
 
             switch (answer) {
@@ -70,13 +70,13 @@ public class Main {
         System.out.println("Enter lastName: ");
         String lastName = scan.nextLine();
         System.out.println("Enter age: ");
-        String age = scan.nextLine();
-        System.out.println("Enter height: ");
-        String height = scan.nextLine();
+        int age = scan.nextInt();
+        System.out.println("Enter height in cm: ");
+        double height = scan.nextDouble();
         System.out.println("Enter true for female and false for male: ");
         boolean gender = scan.nextBoolean();
         scan.nextLine();
-        System.out.println("Enter address: ");
+        System.out.println("Enter country name: ");
         String address = scan.nextLine();
 
         String.valueOf(student);
@@ -89,13 +89,12 @@ public class Main {
     public static void populateArrayList(ArrayList<Student> student) throws IOException {
         File br = new File("student.txt");
         Scanner scanner = new Scanner(br);
-        String content = new String(Files.readAllBytes(Paths.get("student.txt"))).trim();
+        //String content = new String(Files.readAllBytes(Paths.get("student.txt"))).trim();
 
         while (scanner.hasNextLine()) {
-            String[] arr = content.split(" // ");
-            Student student1 = new Student(arr[0], arr[1], arr[2], arr[3], (arr[4].equals("true")), arr[5]);
+            String[] arr = scanner.nextLine().split(" // ");
+            Student student1 = new Student(arr[0], arr[1], (Integer.parseInt(arr[2])), (Double.parseDouble(arr[3])), (Boolean.parseBoolean(arr[4])), arr[5]);
             student.add(student1);
-            System.out.println(scanner.nextLine());
         }
     }
 
@@ -103,13 +102,13 @@ public class Main {
         String output = "";
         File f = new File("student.txt");
         PrintStream fileWriter = new PrintStream(f);
-        for (int i = 0; i < student.size() - 1; i++) {
-            output = student.get(i).getFirstName() + " // " + student.get(i).getLastName()
+        for (int i = 0; i < student.size(); i++) {
+            output += student.get(i).getFirstName() + " // " + student.get(i).getLastName()
                     + " // " + student.get(i).getAge()
                     + " // " + student.get(i).getHeight() + " // " +
                     student.get(i).getGender() + " // " + student.get(i).getAddress() + "\n";
-            fileWriter.print(output); // printsToFile
         }
+        fileWriter.print(output); // printsToFile
     }
 
 

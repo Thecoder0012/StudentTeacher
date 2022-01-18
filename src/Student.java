@@ -4,20 +4,20 @@ public class Student{
 
     private String firstName;
     private String lastName;
-    private String age;
-    private String height;
+    private int age;
+    private double height;
     private boolean gender;
-    private String address;
+    private String country;
 
 
-    Student(String firstName, String lastName, String age, String height, boolean gender, String address) {
+    Student(String firstName, String lastName, int age, double height, boolean gender, String country) {
 
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.height = height;
         this.gender = gender;
-        this.address = address;
+        this.country = country;
     }
 
     public Student() {
@@ -41,19 +41,19 @@ public class Student{
         this.lastName = lastName;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
-    public String getHeight() {
+    public double getHeight() {
         return height;
     }
 
-    public void setHeight(String height) {
+    public void setHeight(double height) {
         this.height = height;
     }
 
@@ -66,46 +66,24 @@ public class Student{
     }
 
     public String getAddress() {
-        return address;
+        return country;
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.country = address;
     }
-
-  /* public String toString(){
-        String gend = gender? "female": "male";
-        return ("First name: "+ firstName+"\nLast name: "+lastName+"\nAddress: "+address+"\nAge: "+ age+"\nHeight: "+height+"\nGender: "+gend+"\n");
-    }*/
 
 
     @Override
     public String toString() {
-        String gend = gender ? "female" : "male";
+        String gend = getGender() ? "female" : "male";
         return
                     getClass().getSimpleName()+ ":\n" +firstName + "\n" +
                           lastName + "\n" +
                           age + "\n" +
                           height + "\n" +
                           gend + "\n" +
-                          address + "\n";
+                          country + "\n";
     }
 }
 
-
-/*
-* public String toString() {
-        String gend = gender? "female": "male";
-        return
-                "\n***************\n"+
-                        getClass().getSimpleName()+":"+
-                "\nfirstName = " + firstName + "\n" +
-                "lastName = " + lastName + "\n" +
-                "age = " + age + "\n" +
-                "height = " + height + "\n" +
-                "gender = " + gend + "\n" +
-                "address = " + address +  "\n"+
-                "***************";
-    }
-*
-* */
